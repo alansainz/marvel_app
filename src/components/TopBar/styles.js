@@ -2,5 +2,5 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background-color: white;
-  height: 60px;
+  height: 10vh;
 `;

@@ -1,16 +1,28 @@
-import React from 'react';
-import { Container } from './styles';
+import React, { useState, useCallback } from 'react';
+import { useAsync } from 'react-async-hook';
+import { Container, HomeContainer } from './styles';
 import CardList from '../CardList';
 import TopBar from '../TopBar';
+import { getRandomCharacter } from '../../utils/api';
+
+const getCharacterData = (result) =>
+  result && result.data && result.data.results;
 
 const Home = () => {
+  const { result, error, loading } = useAsync(getRandomCharacter, []);
+  const randomCharacter = useCallback(getCharacterData(result), [
+    result,
+  ]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error...</div>;
   return (
-    <div>
+    <HomeContainer>
       <TopBar />
       <Container>
-        <CardList cards={[1, 2, 3, 4, 5, 6, 7, 8]} />
+        <CardList cards={randomCharacter} />
       </Container>
-    </div>
+    </HomeContainer>
   );
 };
 

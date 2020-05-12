@@ -4,7 +4,6 @@ import {
   Name,
   NameContainer,
   Container,
-  Test,
 } from './styles';
 
 const card = {

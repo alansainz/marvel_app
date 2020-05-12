@@ -9,13 +9,6 @@ export const CardContainer = styled.div`
   background-color: blue;
 `;
 
-export const Test = styled.div`
-  display: flex;
-  width: 256px;
-  height: 380px;
-  background-color: blue;
-`;
-
 export const Name = styled.div`
   color: white;
   font-weight: bold;
@@ -31,5 +24,4 @@ export const NameContainer = styled.div`
 
 export const Container = styled.div`
   padding: 20px;
-  float: left;
 `;
