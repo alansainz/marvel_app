@@ -21,7 +21,8 @@
     {
       "files": ["*.js", "*.spec.js"],
       "rules": {
-        "react/jsx-filename-extension": "off"
+        "react/jsx-filename-extension": "off",
+        "arrow-body-style": "off"
       }
     }
   ]
