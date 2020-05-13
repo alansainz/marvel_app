@@ -6,30 +6,14 @@ import {
   Container,
 } from './styles';
 
-const card = {
-  id: 1011334,
-  name: '3-D Man',
-  thumbnail: {
-    path: 'http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784',
-    extension: 'jpg',
-  },
-};
+import { getThumbNail, allUpperCase } from '../../utils/assets';
 
-const getThumbNail = (thumbnail) => {
-  if (thumbnail.path && thumbnail.extension) {
-    return `${thumbnail.path}.${thumbnail.extension}`;
-  }
-  return '';
-};
-
-const allUpperCase = (string) => (string ? string.toUpperCase() : '');
-
-const Card = () => {
+const Card = ({ name, thumbnail }) => {
   return (
     <Container>
-      <CardContainer background={getThumbNail(card.thumbnail)}>
+      <CardContainer background={getThumbNail(thumbnail)}>
         <NameContainer>
-          <Name>{allUpperCase(card.name)}</Name>
+          <Name>{allUpperCase(name)}</Name>
         </NameContainer>
       </CardContainer>
     </Container>

@@ -6,7 +6,7 @@ export const CardContainer = styled.div`
   background: url(${(props) => props.background});
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: blue;
+  background-color: #f0eef1;
 `;
 
 export const Name = styled.div`

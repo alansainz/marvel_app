@@ -1,26 +1,25 @@
-import React, { useState, useCallback } from 'react';
-import { useAsync } from 'react-async-hook';
+import React, { useEffect } from 'react';
 import { Container, HomeContainer } from './styles';
-import CardList from '../CardList';
+import { getRandomCharacterRequest } from './actions';
+import { Store } from '../../Store';
 import TopBar from '../TopBar';
-import { getRandomCharacter } from '../../utils/api';
-
-const getCharacterData = (result) =>
-  result && result.data && result.data.results;
+import CardList from '../CardList';
 
 const Home = () => {
-  const { result, error, loading } = useAsync(getRandomCharacter, []);
-  const randomCharacter = useCallback(getCharacterData(result), [
-    result,
-  ]);
+  const { state, dispatch } = React.useContext(Store);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error...</div>;
+  useEffect(() => {
+    // todo: handle fetching and error, useffect deps
+    getRandomCharacterRequest(dispatch);
+  }, []);
+
+  const { characters, noResults } = state;
+  console.log('hello characters', state.noResults);
   return (
     <HomeContainer>
       <TopBar />
       <Container>
-        <CardList cards={randomCharacter} />
+        <CardList cards={characters} noResults={noResults} />
       </Container>
     </HomeContainer>
   );

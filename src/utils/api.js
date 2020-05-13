@@ -10,19 +10,19 @@ const apiDefaultParams = {
 
 const api = axios.create({
   baseURL,
-  params: {
-    apikey,
-  },
 });
 
 export const getRandomCharacter = () => {
   const totalCharacters = 1493;
   const characterOffset = getRandomInt(0, totalCharacters);
 
-  return api
-    .get(`characters?limit=1&offset=${characterOffset}`, {
-      params: { ...apiDefaultParams },
-    })
-    .then((response) => response.data)
-    .catch((error) => error);
+  return api.get(`characters?limit=1&offset=${characterOffset}`, {
+    params: { ...apiDefaultParams },
+  });
+};
+
+export const searchCharacters = (string) => {
+  return api.get(`characters?nameStartsWith=${string}`, {
+    params: { ...apiDefaultParams },
+  });
 };
